@@ -6,7 +6,7 @@
 
 typedef struct {
     FILE* data_file;
-    uint16_t* array;
+    double* array;
 
     bool fits_into_memory;
 } OrbitData;

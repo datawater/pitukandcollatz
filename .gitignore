@@ -4,3 +4,4 @@ data/data.bin
 *.o
 pitukandcollatz
 *.png
+*.pdf

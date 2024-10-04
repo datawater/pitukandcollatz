@@ -41,7 +41,7 @@ OrbitData get_orbit_data(uint64_t limit_of_collatz) {
         ++amount_of_divisions;
 
     size_t needed_memory_to_allocate = sizeof(uint16_t) * (limit_of_collatz / amount_of_divisions);
-    uint16_t* collatz_orbit_lengths = calloc(limit_of_collatz / amount_of_divisions, sizeof(uint16_t));
+    double* collatz_orbit_lengths = calloc(limit_of_collatz / amount_of_divisions, sizeof(double));
     
     assert(collatz_orbit_lengths != NULL);
     if (amount_of_divisions == 1) {
@@ -64,7 +64,7 @@ OrbitData get_orbit_data(uint64_t limit_of_collatz) {
 
         #pragma omp parallel for schedule(dynamic)
         for (uint32_t num = starting_point; num < end_point; num++) {
-            collatz_orbit_lengths[num - starting_point] = collatz_orbit_length(num);
+            collatz_orbit_lengths[num - starting_point] = (double) collatz_orbit_length(num);
         }
 
         fwrite(collatz_orbit_lengths, sizeof(uint16_t), end_point - starting_point, data_file);
