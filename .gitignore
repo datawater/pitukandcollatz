@@ -1,0 +1,6 @@
+/target
+generate_data
+data/data.bin
+*.o
+pitukandcollatz
+*.png
